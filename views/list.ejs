@@ -1,0 +1,34 @@
+<%- include("header.ejs") -%>
+    <body>
+
+        <div class="box" id="heading">
+            <h1> <%= elistname %><h1>
+        </div>
+            
+        <div class="box">
+                
+                    <% enewitems.forEach((item)=>{ %>
+                        <form action="/delete" method="post">
+                            <div class="item">
+                                <input type="checkbox" name="checkbox" value= "<%=item._id%>" onchange="this.form.submit()"> <p><%= item.name %> </p>
+                            </div>
+                            <input type="hidden" name="listname" value="<%= elistname %>" ></input>
+                        </form>
+                      
+                   <% }); %>
+                   <!-- <% for(var i = 0 ; i < enewitems.length ; i++){ %>
+                    <div class="item">
+                    <input type="checkbox"> <p><%= enewitems[i] %> </p>
+                    </div>
+                   <% } %> -->
+                
+                    
+                <form class="item" method="post" action="/">
+                    <input type="text" name="listmember" placeholder="enter to do list" autocomplete="off">
+                    <button type="submit" name="btn" value="<%= elistname %>">+</button>
+                </form>
+        </div>
+        
+       <%- include("footer.ejs") -%>
+    </body>
+</html>
